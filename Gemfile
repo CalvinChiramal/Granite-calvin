@@ -63,3 +63,5 @@ end
 gem "webpacker"
 
 gem "responders"
+
+gem 'react-rails'
