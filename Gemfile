@@ -71,3 +71,5 @@ gem "webpacker"
 gem "responders"
 
 gem "react-rails"
+
+gem "pry-byebug"
