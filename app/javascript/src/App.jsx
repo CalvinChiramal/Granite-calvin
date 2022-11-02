@@ -6,6 +6,8 @@ import { setAuthHeaders } from "apis/axios";
 import Dashboard from "components/Dashboard";
 import PageLoader from "components/PageLoader";
 
+import { initializeLogger } from "./common/logger";
+
 const App = () => {
   const [loading, setLoading] = useState(true);
 
