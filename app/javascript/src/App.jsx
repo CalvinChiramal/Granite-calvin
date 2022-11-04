@@ -5,6 +5,7 @@ import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import { setAuthHeaders } from "apis/axios";
 import Dashboard from "components/Dashboard";
 import PageLoader from "components/PageLoader";
+import CreateTask from "components/Tasks/Create";
 
 import { initializeLogger } from "./common/logger";
 
@@ -30,8 +31,9 @@ const App = () => {
   return (
     <Router>
       <Switch>
+        <Route exact component={CreateTask} path="/tasks/create" />
         <Route exact component={Dashboard} path="/dashboard" />
-        <Route exact path="/" render={() => <div>Home</div>} />
+        {/* <Route exact path="/" render={() => <div>Home</div>} /> */}
         <Route exact path="/about" render={() => <div>About</div>} />
       </Switch>
     </Router>

@@ -12,6 +12,7 @@ const Input = ({
   disabled = false,
   required = true,
   className = "",
+  ...otherProps
 }) => (
   <div className="mt-6">
     {label && (
@@ -34,6 +35,7 @@ const Input = ({
           [className]
         )}
         onChange={onChange}
+        {...otherProps}
       />
     </div>
   </div>

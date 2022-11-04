@@ -10,7 +10,7 @@ const Button = ({
   buttonText,
   onClick = noop,
   loading,
-  className = " ",
+  className = "",
 }) => {
   const handleClick = e => {
     if (!loading) return onClick(e);
@@ -24,7 +24,7 @@ const Button = ({
         disabled={loading}
         type={type}
         className={classnames(
-          [className],
+          { [className]: className },
           "transition border hover:bg-opacity-90 focus:outline-none group relative flex w-full justify-center rounded-md border-transparent px-4 py-2  text-sm font-medium leading-5 text-white duration-150 ease-in-out",
           {
             "bg-bb-purple": !loading,
