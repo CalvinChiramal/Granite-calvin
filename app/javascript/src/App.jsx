@@ -30,7 +30,7 @@ const App = () => {
     <Router>
       <ToastContainer />
       <Switch>
-        <Route exact component={ShowTask} path="tasks/:slug/show" />
+        <Route exact component={ShowTask} path="/tasks/:slug/show" />
         <Route exact component={CreateTask} path="/tasks/create" />
         <Route exact component={Dashboard} path="/dashboard" />
       </Switch>

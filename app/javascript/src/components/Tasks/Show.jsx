@@ -13,9 +13,11 @@ const Show = () => {
 
   const fetchTaskDetails = async () => {
     try {
+      logger.info("print something before await");
       const {
         data: { task },
       } = await tasksApi.show(slug);
+      logger.info("print something after await");
       setTaskDetails(task);
     } catch (error) {
       logger.error(error);
