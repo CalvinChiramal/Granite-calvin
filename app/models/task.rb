@@ -2,6 +2,7 @@
 
 class Task < ApplicationRecord
   MAX_TITLE_LENGTH = 50
+  belongs_to :assigned_user, foreign_key: "assigned_user_id", class_name: "User"
 
   before_validation :set_title, if: :title_not_present
   validates :title, presence: true, length: { maximum: MAX_TITLE_LENGTH }
