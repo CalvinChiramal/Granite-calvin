@@ -73,3 +73,5 @@ gem "responders"
 gem "react-rails"
 
 gem "pry-byebug"
+
+gem "bcrypt", "~> 3.1.13"
