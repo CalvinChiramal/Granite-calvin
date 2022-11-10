@@ -4,6 +4,8 @@ const login = payload => axios.post("/session", { login: payload });
 
 const signup = payload => axios.post("/users", { user: payload });
 
-const authApi = { login, signup };
+const logout = () => axios.delete("/session");
+
+const authApi = { login, signup, logout };
 
 export default authApi;
