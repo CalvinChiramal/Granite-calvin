@@ -15,18 +15,19 @@ const Login = () => {
     setLoading(true);
     try {
       const response = await authApi.login({ email, password });
+      logger.info("response");
       logger.info(response);
       setToLocalStorage({
-        authToken: response.authentication_token,
+        authToken: response.data.authentication_token,
         email: email.toLowerCase(),
-        userId: response.id,
-        userName: response.name,
+        userId: response.data.id,
+        userName: response.data.name,
       });
       setAuthHeaders();
       setLoading(false);
       window.location.href = "/";
     } catch (error) {
-      logger.error(error);
+      logger.error(error.response);
       setLoading(false);
     }
   };

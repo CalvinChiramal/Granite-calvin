@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     unless @user.authenticate(login_params[:password])
       respond_with_error(t("session.incorrect_credentials"), :unauthorized)
     end
+    puts @user
   end
 
   private
