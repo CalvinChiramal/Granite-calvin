@@ -17,6 +17,15 @@ const Show = () => {
 
   const history = useHistory();
 
+  const destroyTask = async () => {
+    try {
+      await tasksApi.destroy({ slug: task.slug });
+      history.push("/");
+    } catch (error) {
+      logger.error(error);
+    }
+  };
+
   const updateTask = () => {
     history.push(`/tasks/${task.slug}/edit`);
   };
@@ -36,14 +45,13 @@ const Show = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    setLoading(true);
     try {
       await commentsApi.create({ content: newComment, task_id: task.id });
       fetchTaskDetails();
       setNewComment("");
+      setLoading(false);
     } catch (error) {
-      logger.error(error.response.data);
-    } finally {
+      logger.error(error);
       setLoading(false);
     }
   };
@@ -64,16 +72,16 @@ const Show = () => {
         </h1>
         <div className="rounded mt-2 mb-4 bg-bb-env px-2">
           <i
-            className="transition ri-edit-line text-center text-2xl
-            duration-300 ease-in-out hover:text-bb-yellow"
+            className="transition ri-delete-bin-5-line mr-2 text-center text-2xl duration-300 ease-in-out hover:text-bb-red"
+            onClick={destroyTask}
+          />
+          <i
+            className="transition ri-edit-line text-center text-2xl duration-300 ease-in-out hover:text-bb-yellow"
             onClick={updateTask}
           />
         </div>
       </div>
-      <h2
-        className="text-md mb-3 pb-3 leading-5 text-bb-gray-600
-        text-opacity-50"
-      >
+      <h2 className="text-md mb-3 pb-3 leading-5 text-bb-gray-600 text-opacity-50">
         <span>Assigned To : </span>
         {task?.assigned_user.name}
       </h2>
