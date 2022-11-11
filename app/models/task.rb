@@ -9,6 +9,7 @@ class Task < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   enum :progress, { pending: "pending", completed: "completed" }, default: :pending
+  enum :status, { starred: "starred", unstarred: "unstarred" }, default: :unstarred
 
   before_validation :set_title, if: :title_not_present
 
@@ -49,5 +50,16 @@ class Task < ApplicationRecord
       if slug_changed? && self.persisted?
         errors.add(:slug, t("task.slug.immutable"))
       end
+    end
+
+    def self.of_status(progress)
+      if progress == :pending
+        starred = pending.starred.order("updated_at DESC")
+        unstarred = pending.unstarred.order("updated_at DESC")
+      else
+        starred = completed.starred.order("updated_at DESC")
+        unstarred = completed.unstarred.order("updated_at DESC")
+      end
+      starred + unstarred
     end
 end

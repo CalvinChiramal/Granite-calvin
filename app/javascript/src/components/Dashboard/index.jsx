@@ -56,6 +56,20 @@ const Dashboard = ({ history }) => {
     history.push(`/tasks/${slug}/show`);
   };
 
+  const starTask = async (slug, status) => {
+    try {
+      const toggledStatus = status === "starred" ? "unstarred" : "starred";
+      await tasksApi.update({
+        slug,
+        payload: { status: toggledStatus },
+        quiet: true,
+      });
+      await fetchTasks();
+    } catch (error) {
+      logger.error(error);
+    }
+  };
+
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -86,6 +100,7 @@ const Dashboard = ({ history }) => {
           destroyTask={destroyTask}
           handleProgressToggle={handleProgressToggle}
           showTask={showTask}
+          starTask={starTask}
         />
       )}
       {!either(isNil, isEmpty)(completedTasks) && (
