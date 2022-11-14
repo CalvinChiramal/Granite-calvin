@@ -15,18 +15,9 @@ class Task < ApplicationRecord
   validates :slug, uniqueness: true
   validate :slug_not_changed
 
-  before_validation :set_title, if: :title_not_present
   before_create :set_slug
 
   private
-
-    def title_not_present
-      self.title.blank?
-    end
-
-    def set_title
-      self.title = "Pay electricity bill"
-    end
 
     def set_slug
       title_slug = title.parameterize

@@ -39,8 +39,8 @@ class TasKTest < ActiveSupport::TestCase
   end
 
   def test_task_should_not_be_valid_without_title
-    @task.title = nil
-    assert @task.valid?
+    @task.title = ""
+    assert_not @task.valid?
   end
 
   def test_task_slug_is_parameterized_title
