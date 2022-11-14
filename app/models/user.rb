@@ -24,7 +24,7 @@ class User < ApplicationRecord
   private
 
     def to_lowercase
-      email.downcase
+      email.downcase!
     end
 
     def assign_tasks_to_task_owners
