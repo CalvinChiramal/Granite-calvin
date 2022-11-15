@@ -60,6 +60,9 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
+  # For opening mails in development env
+  gem "letter_opener", group: :development
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
@@ -89,3 +92,6 @@ gem "pundit"
 gem "minitest-bisect"
 
 gem "sidekiq", "<7"
+
+# For periodic sidekiq jobs
+gem "sidekiq-cron"
