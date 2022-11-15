@@ -5,5 +5,5 @@ class Preference < ApplicationRecord
 
   validates :notification_delivery_hour, presence: true,
     numericality: { only_integer: true },
-    inclusion: { in: 0..23, message: t("preference.notification_delivery_hour.range") }
+    inclusion: { in: 0..23, message: I18n.t("preference.notification_delivery_hour.range") }
 end

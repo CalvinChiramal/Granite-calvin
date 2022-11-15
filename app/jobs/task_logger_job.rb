@@ -6,7 +6,7 @@ class TaskLoggerJob < ApplicationJob
 
   def perform(task)
     puts "Created a task with following attributes :: #{task.attributes}"
-    log = Log.create! task_id: task.id, message: msg
+    log = Log.create! task_id: task.id, message: "message"
 
     puts log.message
   end

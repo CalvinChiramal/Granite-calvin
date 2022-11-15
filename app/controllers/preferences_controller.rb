@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PreferencesController < ApplicationController
-  before_action :load_preferences
+  before_action :load_preference
 
   def show
     respond_with_json({ preference: @preference })
